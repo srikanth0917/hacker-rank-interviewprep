@@ -1,14 +1,10 @@
-package or.gundam.arrays;
+package org.gundam.arrays;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
-import java.util.stream.Collectors;
+import java.io.*;
+import java.util.*;
 
-public class MinimumSwaps1 {
+public class MinimumSwaps {
+
     // Complete the minimumSwaps function below.
     static int minimumSwaps(int[] arr) {
 
@@ -21,22 +17,19 @@ public class MinimumSwaps1 {
 
         var i = 0;
         var minimumSwaps = 0;
-        var minNum = Collections.min(Arrays.stream(arr).boxed().toList());
-
         while (i < arr.length) {
 
             if (arr[i] != i + 1) {
                 var value = arr[i];
-                arr[i] = arr[value-minNum];
-                arr[value-minNum] = value;
-                Arrays.stream(arr).forEach(System.out::print);
-                System.out.println();
+                arr[i] = arr[value - 1];
+                arr[value - 1] = value;
                 minimumSwaps++;
             } else {
                 i++;
             }
+
+
         }
-        System.out.println("Minimum swaps: "+minimumSwaps);
         return minimumSwaps;
     }
 
@@ -51,6 +44,7 @@ public class MinimumSwaps1 {
         int[] arr = new int[n];
 
         String[] arrItems = scanner.nextLine().split(" ");
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         for (int i = 0; i < n; i++) {
             int arrItem = Integer.parseInt(arrItems[i]);

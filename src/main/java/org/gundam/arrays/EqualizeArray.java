@@ -1,4 +1,4 @@
-package or.gundam.arrays;
+package org.gundam.arrays;
 
 import java.io.*;
 import java.util.Collections;
